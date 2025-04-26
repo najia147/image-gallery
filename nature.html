@@ -27,7 +27,36 @@
           {                    
               imgSrc: './images/nature/3.jpg',
               imgAlt: 'A close-up of a leaf with dew drops.',                            
-          },            
+          },         
+          {                    
+              imgSrc: './images/nature/4.JPG',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },                
+          {                    
+              imgSrc: './images/nature/5.jpg',
+              imgAlt: 'A beautiful waterfall cascading down rocks.',                            
+          },      
+          {                    
+              imgSrc: './images/nature/6.jpeg',
+              imgAlt: 'A beautiful waterfall cascading down rocks.',                            
+          },                
+          {                    
+              imgSrc: './images/nature/7.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },  
+          ,                
+          {                    
+              imgSrc: './images/nature/8.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },  
+           {                    
+              imgSrc: './images/nature/9.jpeg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },       
+          {                    
+              imgSrc: './images/nature/10.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },                        
       ], 
       activeTab: 'Nature', 
       open: false,          
@@ -50,7 +79,6 @@
       },        
   }" x-cloak class="relative w-full  overflow-hidden">
 
-  <!-- Tab -->
   <!-- Header -->
   <header>
     <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -115,7 +143,7 @@
       <!-- Change min-h-[50svh] to your preferred height size -->
       <div >
         <template x-for="(slide, index) in slides">
-          <div x-show="currentSlideIndex == index + 1" class="w-full h-full" x-transition.opacity.duration.1000ms>
+          <div x-show="currentSlideIndex == index + 1" class="w-full h-full" x-transition.opacity.duration.500ms>
             <img class="w-full h-full  inset-0 object-cover text-on-surface dark:text-on-surface-dark"
               x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" />
           </div>
@@ -126,61 +154,46 @@
 
     <!-- Details section -->
   <div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 ">
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/1.jpg"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/2.jpg"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/3.jpg"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/4.JPG"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/5.jpg"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/6.jpeg"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg"
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/7.jpg"
         alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg"
-        alt="">
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/nature/10.jpg" alt="">
     </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg"
-        alt="">
-    </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg"
-        alt="">
-    </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg"
-        alt="">
-    </div>
-    <div>
-      <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg"
-        alt="">
-    </div>
+        <div class="aspect-w-1 aspect-h-1">
+          <img class="object-cover w-full h-full" src="./images/nature/9.jpg" alt="">
+        </div>
   </div>
 
 
-  <footer class="bg-white bottom-0 rounded-lg shadow-sm m-4 dark:bg-gray-800">
+  <footer class="bg-white bottom-0 flex items-center justify-between  rounded-lg shadow-sm m-4 dark:bg-gray-800">
     <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/"
-          class="hover:underline">Flowbite™</a>. All Rights Reserved.
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 All Rights Reserved.
       </span>
     </div>
   </footer>      
