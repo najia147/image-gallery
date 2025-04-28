@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+  <style>
+     [x-cloak]{
+     display: none !important;
+    }
+  </style>
+  <link href="./src/output.css" rel="stylesheet">
+</head>
+<body>
+  <div x-data="{  
+       tabs: [{title: 'Home', href: 'index'}, {title: 'Nature', href: 'nature'}, {title: 'Foods', href: 'foods'}, {title: 'Historical Places', href: 'places'}],          
+      slides: [                
+          {
+              imgSrc: './images/places/9.jpg',
+              imgAlt: 'A serene landscape with mountains and a lake.',                
+          },                
+          {                    
+              imgSrc: './images/places/2.jpg',
+              imgAlt: 'A vibrant sunset over a field of flowers.',                                 
+          },                
+          {                    
+              imgSrc: './images/places/3.jpg',
+              imgAlt: 'A close-up of a leaf with dew drops.',                            
+          },         
+          {                    
+              imgSrc: './images/places/4.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },                
+          {                    
+              imgSrc: './images/places/1.jpg',
+              imgAlt: 'A beautiful waterfall cascading down rocks.',                            
+          },      
+          {                    
+              imgSrc: './images/places/6.jpg',
+              imgAlt: 'A beautiful waterfall cascading down rocks.',                            
+          },                
+          {                    
+              imgSrc: './images/places/7.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },    
+          {                    
+              imgSrc: './images/places/11.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },                
+          {                    
+              imgSrc: './images/places/9.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },                
+          {                    
+              imgSrc: './images/places/10.jpg',
+              imgAlt: 'A tranquil forest with sunlight filtering through the trees.',                            
+          },            
+      ], 
+      activeTab: 'Historical Places', 
+      open: false,          
+      currentSlideIndex: 1,
+      previous() {                
+          if (this.currentSlideIndex > 1) {                    
+              this.currentSlideIndex = this.currentSlideIndex - 1                
+          } else {   
+              // If it's the first slide, go to the last slide           
+              this.currentSlideIndex = this.slides.length                
+          }            
+      },            
+      next() {                
+          if (this.currentSlideIndex < this.slides.length) {                    
+              this.currentSlideIndex = this.currentSlideIndex + 1                
+          } else {                 
+              // If it's the last slide, go to the first slide    
+              this.currentSlideIndex = 1                
+          }            
+      },        
+  }" x-cloak class="relative w-full  overflow-hidden">
+
+  <!-- Header -->
+  <header>
+    <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+        <!-- Logo -->
+        <a href="./index.html" class="flex items-center">
+          <img src="./images/logo.png" class="mr-3 h-6 sm:h-9" alt="Logo" />
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Image Gallery</span>
+        </a>
+  
+        <!-- Mobile toggle button -->
+        <div class="flex items-center lg:order-2">
+          <button @click="open = !open"
+            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+  
+        <!-- Tabs -->
+        <div :class="{'hidden': !open, 'flex': open}" class="w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+          <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+            <template x-for="tab in tabs" :key="tab.title">
+              <li>
+                <a @click="activeTab = tab.title; open = false" :href="tab.href + '.html'"
+                  class="block py-2 pr-4 pl-3 text-black rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white"
+                  :class="{'underline underline-offset-1 ': activeTab === tab.title}" x-text="tab.title"></a>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+    <div class="relative min-h-[60vh] md:min-h-[90svh] w-full">
+      <!-- previous button -->
+      <button type="button" 
+        class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-surface/40 p-2 text-on-surface transition hover:bg-surface/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:outline-offset-0 dark:bg-surface-dark/40 dark:text-on-surface-dark dark:hover:bg-surface-dark/60 dark:focus-visible:outline-primary-dark"
+        aria-label="previous slide" x-on:click="previous()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="3"
+          class="size-5 md:size-6 pr-0.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+    
+      <!-- next button -->
+      <button type="button"
+        class="absolute right-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-surface/40 p-2 text-on-surface transition hover:bg-surface/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:outline-offset-0 dark:bg-surface-dark/40 dark:text-on-surface-dark dark:hover:bg-surface-dark/60 dark:focus-visible:outline-primary-dark"
+        aria-label="next slide" x-on:click="next()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="3"
+          class="size-5 md:size-6 pl-0.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    
+      <!-- slides -->
+      <!-- Change min-h-[50svh] to your preferred height size -->
+      <div >
+        <template x-for="(slide, index) in slides">
+          <div x-show="currentSlideIndex == index + 1" class="w-full h-full" x-transition.opacity.duration.500ms>
+            <img class="w-full h-full  inset-0 object-cover text-on-surface dark:text-on-surface-dark"
+              x-bind:src="slide.imgSrc" x-bind:alt="slide.imgAlt" />
+          </div>
+        </template>
+      </div>
+     
+    </div>
+
+    <!-- Details section -->
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 ">
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/6.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/2.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/3.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/4.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/5.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/1.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/7.jpg"
+        alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/11.jpg" alt="">
+    </div>
+    <div class="aspect-w-1 aspect-h-1">
+      <img class="object-cover w-full h-full" src="./images/places/9.jpg" alt="">
+    </div>
+  </div>
+
+
+  <footer class="bg-white bottom-0 flex items-center justify-between  rounded-lg shadow-sm m-4 dark:bg-gray-800">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 All Rights Reserved.
+      </span>
+    </div>
+  </footer>      
+
+  </div>
+</body>
+</html>
